@@ -1,9 +1,12 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 
 class MyUser(AbstractBaseUser):
+    id = models.CharField(max_length=80, primary_key=True, default=str(uuid.uuid4()), editable=False)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
